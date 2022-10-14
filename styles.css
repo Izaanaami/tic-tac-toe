@@ -1,0 +1,33 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+main {
+    flex: 9 ;
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.playBoard {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #3a8844;
+    width: 45%;
+    height: 60%;
+}
+.pieceContainer {
+    flex: 1 1 30%;
+    border: 1px solid #717171;
+}
+footer {
+    flex: 1;
+    height: 10vh;
+    width: 100%;
+    background-color: #812181;
+}
