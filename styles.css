@@ -15,7 +15,7 @@ main {
 }
 .playBoard {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     background-color: #3a8844;
     width: 45%;
@@ -24,6 +24,11 @@ main {
 .pieceContainer {
     flex: 1 1 30%;
     border: 1px solid #717171;
+}
+#winner {
+    background-color: #34a2ea;
+    color: aliceblue;
+    border: 1px solid #00ea23;
 }
 footer {
     flex: 1;
