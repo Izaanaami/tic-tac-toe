@@ -1,6 +1,6 @@
 let game = (() => {
     // set an array to contain players
-    let players = [];
+    const players = [];
     let gameBoard = (() => {
         let board = [];
         let boardFiller = (() => {
@@ -12,21 +12,22 @@ let game = (() => {
         return {fill}
     })();
     const player = (playerName , playerMark) => {
-        const name = playerName + "a";
+        const name = playerName;
         let turn = false;
         let winner = false
+        let mark = ""
         
-        if(playerMark === "x"){
-            turn = true;
-        }
         // add each player into players array
-        if (playerMark === "x" || playerMark === "o"){
-            let mark = playerMark;
-            return {name , mark , turn , winner};
+        if (playerMark === "X" || playerMark === "O"){
+            mark = playerMark;
+            if(playerMark === "X"){
+                turn = true;
+            }
         } else {
-            let mark = "x";
-            return {name , mark , turn , winner};
+            mark = "X";
+            turn = true;
         } 
+        return {name , mark , turn , winner};
     };
     
     // if not we move to second method
@@ -90,12 +91,56 @@ let game = (() => {
     // 369
     // 159
     // 357
-    
+    const marks = document.querySelectorAll(".mark");
+    let playerMark = "";
+    for(let mark of marks) {
+        mark.addEventListener("click", () => {
+            for(let marker of marks){
+                if(marker.id === "clicked-mark"){
+                    marker.id = ""
+                }
+            }
+            mark.id = "clicked-mark";
+            playerMark = mark.textContent;
+        })
+    }
     // create a function to display every item on board
     const start = () => {
+        const playerName = document.querySelector(".name-input").value
+        const _usedBoard = document.querySelector(".playBoard")
+        if(_usedBoard){
+            _usedBoard.remove()
+            let board = gameBoard.fill;
+            for(let i = 0; i < board.length; i++){
+                board.splice(i , 1, "")
+            }
+            console.log("cleared-board")
+            const result = document.querySelector(".result")
+            result.style.display = "none"
+            
+        }
+        console.log("starts")
+        let playerOne = player(playerName , playerMark);
+        game.players.push(playerOne)
+        if(playerOne.mark === "X"){
+            let playerTwo = player("michael" , "O")
+            game.players.push(playerTwo); 
+            console.log(playerOne)
+            console.log(playerTwo)   
+        } else {
+            let playerTwo = player("michael" , "X")
+            game.players.push(playerTwo)
+            console.log(playerOne)
+            console.log(playerTwo)
+        }
+        const footer = document.querySelector("footer");
+        footer.style.backgroundColor = "#f4decb";
         const board = gameBoard.fill;
         const mainNode = document.querySelector("main");
+        const body = document.querySelector("body");
         let playBoard = document.createElement("div");
+        playBoard.remove()
+        let homePage = document.querySelector(".home-page");
         playBoard.classList.add("playBoard");
         mainNode.appendChild(playBoard);
         for (let i = 0 ; i < board.length ; i++){
@@ -104,6 +149,10 @@ let game = (() => {
             playBoard.appendChild(pieceContainer);
             pieceContainer.id = i;
         }
+        body.style.backgroundColor = "#f8eee7"; 
+        homePage.style.display = "none";
+        playBoard.style.display = "flex";
+
         let pieces = document.querySelectorAll(".pieceContainer");
         // set eventListener on each board item
         let _markedBoard = 0
@@ -137,7 +186,8 @@ let game = (() => {
                     // check for winner
                     // 
                     const result = (() => {
-                       
+                        
+                        
                         let i = 0;
                         // declare a array to store index for winner line
                         let winnersBox = [];
@@ -154,7 +204,13 @@ let game = (() => {
                             for(let p = 0; p < players.length; p++){
                                 if(board[i] === players[p].mark){
                                     players[p].winner = true;
+                                    const resultNode = document.querySelector(".result");
+                                    resultNode.style.display = "flex";
+                                    const resultNodeText = document.querySelector(".result-text");
+                                    resultNodeText.textContent = `${players[p].name} Won the Match`;
                                     console.log(`${players[p].name} Won the match`)
+                                    let restart = document.querySelector("#restart");
+                                    restart.addEventListener("click", game.start);
                                 }
                             }
                         }
@@ -208,13 +264,10 @@ let game = (() => {
     }
     return { start , player , players}
 })();
-let playerOne = game.player("jafar" , 'x');
-game.players.push(playerOne)
-let playerTwo = game.player("michael" , "o")
-game.players.push(playerTwo)
-game.start()
-console.log(playerOne)
-console.log(playerTwo)
+
+let button = document.querySelector(".button")
+button.addEventListener("click", game.start)
+
 
 
 

@@ -1,51 +1,192 @@
 body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
     margin: 0;
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
-    background-color: #f8eee7;
+    height: 100%;
+    min-height: 100vh;
+    background-color: #f4decb;
+    transition: background-color 2s;
     box-sizing: border-box;
 }
 main {
     flex: 9 ;
-    width: 100vw;
+    width: 100%;
     height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items:center;
+    position: relative;
+}
+.home-page {
+    height: 60vh;
+    max-height: 350px;
+    background-color: #94618e;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 30px 5px #49274a;
+}
+.player-name {
+    display: flex;
+    width: 40vw;
+    max-width: 300px;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    text-align: center;
+}
+.name-input {
+    background-color: #49274a;
+    color: #f8eee7;
+    width: 60%;
+    border: 2px solid #49274a;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: box-shadow 1s;
+    transition: background-color 1s;
+}
+.name-input:hover {
+    box-shadow: 0 0 10px 10px #49274a;
+    background-color: #94618e;
+}
+.player-mark {
+    width: 50vw;
+    max-width: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.mark {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #49274a;
+    border-radius: 5px;
+    font-size: 35px;
+    aspect-ratio: 1 / 1;
+    width: 40px;
+    text-align: center;
+    
+    transition: box-shadow 1s;
+}
+.mark:hover {
+    cursor: pointer;
+    color: #f8eee7;
+    transition: color 0.9s;
+    box-shadow: 0 0 20px 5px #49274a;
+
+}
+#clicked-mark {
+    color: #12cf2e;
+    box-shadow: 0 0 10px 10px #49274a;
+
+}
+
+.choose {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.result {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 5vh;
+    font-size: 44px;
+}
+.button {
+    display: block ;
+    border: none;
+    min-width: 80px;
+    min-height: 30px;
+    color: #f8eee7;
+    border-radius: 5px;
+    background-color: #49274a;
+    transition: background-color 1s;
+    transition: box-shadow 0.5s;
+}
+.button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 15px 10px #49274a;
+    background-color: #94618e;
 }
 .playBoard {
-    display: flex;
+    display: none;
     flex-direction: row;
     flex-wrap: wrap;
     background-color: #94618e;
-    width: 45%;
+    width: 50vw;
+    max-width: 350px;
+    max-height: 350px;
+    margin-bottom: 5px;
     aspect-ratio: 1 / 1;
+    transition: display 3s;
+    box-shadow: 0 0 100px 30px #49274a;
 }
 .pieceContainer {
     flex: 1 1 30%;
+    aspect-ratio: 1 / 1;
     min-height: 30%;
+    
     text-align: center;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 50px;
     font-weight: 600;
     border: 1px solid #49274a;
+    color: #49274a;
 }
 #winner {
-    background-color: #34a2ea;
-    color: aliceblue;
-    border: 1px inset #00ea23;
+    color: #f4decb;
+    
 }
+
 footer {
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 10vh;
     width: 100%;
     background-color: #f8eee7;
+    transition: background-color 1s;
 }
-#94618e
+.foot {
+    text-align: center;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #49274a;
 
-#49274a
-
-#f4decb
-
-#f83337
+}
+.github {
+    padding: 0 3px;
+    color: #49274a;
+}
+.github:visited {
+    color: #49274a;
+    text-decoration: double;
+}
+.hub-icon {
+    width: 22px;
+    height: auto;
+}
+/* #94618e */
+/* #49274a */
+/* #f4decb */
+/* #f83337 */
