@@ -125,7 +125,7 @@ let game = (() => {
 
         //change start index to 1
         i = 1;
-        z = 3;
+        // z = 3; z is already 3
         compare();
         // change start index to 3
         i = 3;
@@ -213,7 +213,13 @@ let game = (() => {
     }
     // create a function to display every item on board
     const start = () => {
-        const playerName = document.querySelector(".name-input").value
+        const playerNameInput = document.querySelector(".name-input")
+        let playerName = "";
+        if (playerNameInput.value === "" && playerMark === "X"){
+            playerName = "PlayerOne"
+        } else if(playerNameInput.value === "" && playerMark === "O"){
+            playerName = "PlayerTwo"
+        }
         const _usedBoard = document.querySelector(".playBoard")
         if (_usedBoard) {
             _usedBoard.remove()
