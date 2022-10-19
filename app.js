@@ -215,6 +215,9 @@ let game = (() => {
     const start = () => {
         const playerNameInput = document.querySelector(".name-input")
         let playerName = "";
+        if(playerMark === ""){
+            playerMark = "X"
+        }
         if (playerNameInput.value === "" && playerMark === "X"){
             playerName = "PlayerOne"
         } else if(playerNameInput.value === "" && playerMark === "O"){
