@@ -219,6 +219,8 @@ let game = (() => {
             playerName = "PlayerOne"
         } else if(playerNameInput.value === "" && playerMark === "O"){
             playerName = "PlayerTwo"
+        } else {
+            playerName = playerNameInput.value
         }
         const _usedBoard = document.querySelector(".playBoard")
         if (_usedBoard) {
